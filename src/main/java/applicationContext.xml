@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="customerDao" class="com.highradius.daoimpl.CustomerDaoImpl">
+	</bean>
+	
+	<bean id="customerManager" class="com.highradius.managerimpl.CustomerManagerImpl"  >
+	<property name="customerDao" ref="customerDao"></property>
+	</bean>
+	
+	<!--  -->
+	<bean id="employeeDao" class="com.highradius.daoimpl.EmployeeDaoImpl">
+	</bean>
+	
+	<bean id="employeeDao" class="com.highradius.managerimpl.EmployeeManagerImpl" autowire="byName">
+	<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	
+	<!--  -->
+	<bean id="orderDao" class="com.highradius.daoimpl.OrderDaoImpl">
+	</bean>
+	
+	<bean id="orderManager" class="com.highradius.managerimpl.OrderManagerImpl" autowire="byName">
+	<property name="orderDao" ref="orderDao"></property>
+	</bean>
+	<!--  -->
+	<bean id="orderDetailsDao" class="com.highradius.daoimpl.OrderDetailsDaoImpl">
+	</bean>
+	
+	<bean id="orderDetailsManager" class="com.highradius.managerimpl.OrderDetailsManagerImpl" autowire="byName">
+	<property name="orderDetailsDao" ref="orderDetailsDao"></property>
+	</bean>
+</beans>
